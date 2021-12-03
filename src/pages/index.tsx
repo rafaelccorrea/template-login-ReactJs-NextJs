@@ -1,7 +1,11 @@
+import Layout from '../components/template/Layout'
+
 export default function Home() {
   return (
-    <div>
-      <h1>Admin</h1>
-    </div>
+    <Layout
+      title="Pagina inicial" subtitle="Index"
+    >
+      <h3>Conteúdo!!!!</h3>
+    </Layout>
   )
 }

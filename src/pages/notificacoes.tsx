@@ -7,7 +7,7 @@ export default function Notificacoes() {
 
   return (
     <Layout
-      title="Notificacoes" subtitle="Aqui estao as novidades"
+      title="Notificacoes" subtitle="Notificacao"
     >
     </Layout>
   )

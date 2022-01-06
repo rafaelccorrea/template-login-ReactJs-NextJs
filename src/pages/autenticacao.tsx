@@ -1,8 +1,11 @@
 import { useState } from "react";
 import Auth from "../components/auth/auth";
 import { Warning } from "../components/icons";
+import useAuth from "../data/hook/useAuth";
 
 export default function Authenticate(){
+
+    const {usuario, loginGoogle} = useAuth()
 
     const [ modo, setModo ] = useState<'login' | 'cadastro'>('login')
     const [ email, setEmail ] = useState('')
@@ -76,7 +79,7 @@ export default function Authenticate(){
             <hr className="my-6 botder-gray-300 w-full" />
 
             
-            <button onClick={submeter} className={`
+            <button onClick={loginGoogle} className={`
                 w-full bg-red-500 hover:bg-red-400
                 text-white rounded-lg px-4 py-3
             `}>

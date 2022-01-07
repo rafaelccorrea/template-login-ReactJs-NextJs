@@ -10,7 +10,7 @@ interface AuthContextProps {
 const AuthContext = createContext<AuthContextProps>({})
 
 async function usuarioNormal(usuarioFirebase: firebase.User): Promise<Usuario> {
-    const token =  await usuarioFirebase.getIdToken()
+    const token = await usuarioFirebase.getIdToken()
     return {
         uid: usuarioFirebase.uid,
         nome: usuarioFirebase.nome,

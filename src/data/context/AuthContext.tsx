@@ -9,7 +9,7 @@ interface AuthContextProps {
 
 const AuthContext = createContext<AuthContextProps>({})
 
-async function usuarioNormal(usuarioFirebase: firebase.User): Promise<Usuario> {
+async function usuarioNormalizado(usuarioFirebase: firebase.User): Promise<Usuario> {
     const token = await usuarioFirebase.getIdToken()
     return {
         uid: usuarioFirebase.uid,
@@ -38,4 +38,4 @@ export function AuthProvider(props) {
         </AuthContext.Provider>
     )
 }
-export default AuthContextProps;
+export default AuthContext;

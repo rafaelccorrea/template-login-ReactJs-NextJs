@@ -1,4 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
+import Image from 'next/image'
 import Auth from "../components/auth/auth";
 import { Warning } from "../components/icons";
 import useAuth from "../data/hook/useAuth";
@@ -32,7 +34,8 @@ export default function Authenticate(){
             <div className=" hidden md:block w-1/2 lg:w-2/3">
                 <img src="https://source.unsplash.com/random" 
                      alt="Imagem da Tela de Autenticacao"
-                     className="h-screen w-full object-cover"/>
+                     className="h-screen w-full object-cover"
+                />
             </div>
         
         <div className="m-10 w-full md:w-1/2 lg:w-1/3">

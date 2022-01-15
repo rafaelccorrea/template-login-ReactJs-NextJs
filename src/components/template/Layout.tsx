@@ -2,7 +2,8 @@ import MenuLateral from './MenuLateral';
 import Cabecalho from './Cabecalho';
 import Conteudo from './Conteudo';
 import useData from '../../data/hook/useData';
-import GuardAutenticacao from '../auth/guardAutenticacao';
+import guardAutenticacao from '../../guard/guardAutenticacao';
+// import GuardAutenticacao from '../auth/guardAutenticacao';
 
 interface LayoutProps{
     title: string
@@ -12,9 +13,9 @@ interface LayoutProps{
 
 export default function Layout(props: LayoutProps){
     const {tema} = useData()
-    
-    return (
-        <GuardAutenticacao>
+
+    return guardAutenticacao (
+        // <GuardAutenticacao>
             <div className={`${tema} flex h-screen w-screen`}>
                 <MenuLateral/>
                 <div className={`
@@ -28,7 +29,7 @@ export default function Layout(props: LayoutProps){
                     <Conteudo>{props.children}</Conteudo>
                 </div>
             </div>
-        </GuardAutenticacao>
+        /* </GuardAutenticacao> */
         
     )
 }

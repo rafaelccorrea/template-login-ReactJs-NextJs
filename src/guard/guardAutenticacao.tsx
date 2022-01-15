@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import router from 'next/router'
-import loading from '../../../public/images/loading.gif'
-import useAuth from '../../data/hook/useAuth'
+import loading from '../../public/images/loading.gif'
+import useAuth from '../data/hook/useAuth'
 
-export default function GuardAutenticacao(props){
+export default function guardAutenticacao(jsx){
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { usuario, carregando} = useAuth()
@@ -23,7 +23,7 @@ export default function GuardAutenticacao(props){
                     }}
                 />
             </Head>
-            {props.children}
+            {jsx}
         </>
         )
     }

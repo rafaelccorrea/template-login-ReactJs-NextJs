@@ -6,6 +6,8 @@ import Cookies from 'js-cookie'
 interface AuthContextProps {
     usuario?: Usuario
     carregando?: boolean
+    login?: (email: string, senha: string) => Promise<void>;
+    cadastrar?: (email: string, senha: string) => Promise<void>;
     loginGoogle?: () => Promise<void>;
     logout?: () => Promise<void>;
 }
@@ -63,7 +65,7 @@ export function AuthProvider(props) {
                 new firebase.auth.GoogleAuthProvider()
             )
     
-            configSessao(res.user)
+            await configSessao(res.user)
             route.push('/')
 
         }finally{
@@ -84,6 +86,30 @@ export function AuthProvider(props) {
 
     }
 
+    async function login(email, senha){
+        try{
+            setCarregando(true)
+            const res = await firebase.auth().signInWithEmailAndPassword(email, senha)
+            await configSessao(res.user)
+            route.push('/')
+
+        }finally{
+            setCarregando(false)
+        }
+    }
+
+    async function cadastrar(email, senha){
+        try{
+            setCarregando(true)
+            const res = await firebase.auth().createUserWithEmailAndPassword(email, senha)
+            await configSessao(res.user)
+            route.push('/')
+
+        }finally{
+            setCarregando(false)
+        }
+    }
+
     useEffect(() => {
         if(Cookies.get('admin-template-auth')){
             const cancelar = firebase.auth().onIdTokenChanged(configSessao)
@@ -97,6 +123,8 @@ export function AuthProvider(props) {
         <AuthContext.Provider value={{
             usuario,
             carregando,
+            login,
+            cadastrar,
             loginGoogle,
             logout,
         }}>
